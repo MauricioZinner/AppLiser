@@ -1,0 +1,218 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>crear-punto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">crear-punto</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-col>
+      <ion-button (click)="mostrarInformacion()" type="submit"   shape="round" class="formButon"[color]="activeButton === 'informacion' ? 'danger' : 'light'">Información</ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button (click)="mostrarPorHacer()" type="submit"  shape="round" class="formButon"  [color]="activeButton === 'porHacer' ? 'danger' : 'light'">Por hacer</ion-button>
+    </ion-col>
+  </ion-grid>
+
+  <form [formGroup]="formRegister" (ngSubmit)="submitForm()" class="login-form">
+
+        <div [hidden]="!informacionActiva">
+
+              <ion-row>
+                  <ion-col size="12">
+                    <ion-label>Nombre Agencia</ion-label>
+                            <!--     <ion-input style="background-color: rgb(246, 245, 245);border-radius: 7px;
+                                  --border-width: 0;
+                                  --border-color: transparent;
+                                " type="text" formControlName="nombre"  label="Nombre" label-placement="floating"  fill="solid"></ion-input> -->
+                          <ion-item>
+                            <ion-select label="Agencias" placeholder="Agencia" formControlName="nombre">
+                                 <ion-select-option *ngFor="let item of agencias" [value]="item.idAgencia">{{item.nombreAgencia
+                                }}</ion-select-option>
+                            </ion-select>
+                          </ion-item>
+
+                  </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="6">
+                  <ion-label>Fecha Desde</ion-label>
+                  <ion-datetime-button style="width: 130px;height: 50px;; background-color: rgb(237, 237, 237);border-radius: 7px;" datetime="FechaDesde"></ion-datetime-button>
+                  <ion-modal [keepContentsMounted]="true">
+                    <ng-template>
+                      <ion-datetime presentation="date"  formControlName="fechaInicio" id="FechaDesde"></ion-datetime>
+                    </ng-template>
+                  </ion-modal>
+                </ion-col>
+
+                <ion-col size="6">
+                  <ion-label>Fecha Hasta</ion-label>
+                  <ion-datetime-button  style="width: 130px;height: 50px;; background-color: rgb(237, 237, 237);border-radius: 7px;" datetime="FechaHasta"></ion-datetime-button>
+                  <ion-modal [keepContentsMounted]="true">
+                    <ng-template>
+                      <ion-datetime formControlName="fechaFin" presentation="date" id="FechaHasta"></ion-datetime>
+                    </ng-template>
+                  </ion-modal>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                    <ion-col size="6">
+                      <ion-label>Hora Entrada</ion-label>
+                      <ion-datetime-button style="width: 130px;height: 50px; background-color: rgb(237, 237, 237);border-radius: 7px;" datetime="entrada"></ion-datetime-button>
+                      <ion-modal [keepContentsMounted]="true">
+                        <ng-template>
+                          <ion-datetime formControlName="horaEntrada" presentation="time" id="entrada"></ion-datetime>
+                        </ng-template>
+                      </ion-modal>
+                    </ion-col>
+
+                    <ion-col size="6">
+                      <ion-label>Hora Salida </ion-label>
+                      <ion-datetime-button  style="width: 130px; height: 50px;background-color: rgb(237, 237, 237);border-radius: 7px;" datetime="salida"></ion-datetime-button>
+                      <ion-modal [keepContentsMounted]="true">
+                        <ng-template>
+                          <ion-datetime formControlName="horaSalida"  presentation="time" id="salida"></ion-datetime>
+                        </ng-template>
+                      </ion-modal>
+                    </ion-col>
+              </ion-row>
+
+              <ion-row>
+                  <ion-col size="6">
+                    <ion-label>Almuerzo Entrada</ion-label>
+                    <ion-datetime-button style="width: 130px;height: 50px; background-color: rgb(237, 237, 237);border-radius: 7px;" datetime="Almuerzoentrada"></ion-datetime-button>
+                    <ion-modal [keepContentsMounted]="true">
+                      <ng-template>
+                        <ion-datetime formControlName="horaAlmuerzoInicio"  presentation="time" id="Almuerzoentrada"></ion-datetime>
+                      </ng-template>
+                    </ion-modal>
+                  </ion-col>
+
+                  <ion-col size="6">
+                    <ion-label>Almuerzo Salida </ion-label>
+                    <ion-datetime-button  style="width: 130px;height: 50px;; background-color: rgb(237, 237, 237);border-radius: 7px;" datetime="Almuerzosalida"></ion-datetime-button>
+                    <ion-modal [keepContentsMounted]="true">
+                      <ng-template>
+                        <ion-datetime formControlName="horaAlmuerzoFin"  presentation="time" id="Almuerzosalida"></ion-datetime>
+                      </ng-template>
+                    </ion-modal>
+                  </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <div>
+                  <ion-checkbox formControlName="tieneAlmuerzo"  slot="start" checked></ion-checkbox>
+                  <ion-label>Aplica hora de almuerzo</ion-label>
+              </div>
+              </ion-row>
+
+              <div style="background-color: rgb(246, 245, 245) ;  --border-width: 0;--border-color: transparent;">
+                <ion-select label-placement="floating" fill="solid"
+                  label="Ver Personal Asignado"
+                  interface="action-sheet"
+                  placeholder="Personal Asignado"
+                >
+                  <ion-select-option *ngFor="let item of data" [value]=item>{{item}}</ion-select-option>
+                </ion-select>
+              </div>
+
+              <ion-row>
+                  <ion-list [inset]="true">
+                    <ion-item style="background-color: rgb(72, 72, 72); border-radius: 7px; margin-left: 50px;" [button]="true" [detail]="false" id="select-personas">
+                      <ion-icon name="add-outline"></ion-icon>
+                      <ion-label>Agregar más personas</ion-label>
+                      <!-- <div slot="end" id="selected-fruits">{{ selectedFruitsText }}</div> -->
+                    </ion-item>
+                  </ion-list>
+
+                  <ion-modal trigger="select-personas" #modal>
+                    <ng-template>
+                      <app-typeahead
+                            class="ion-page"
+                            title="Agregar más personas"
+                            [items]="personal"
+                            [total2]="total1"
+                            [ids]="IdsPersonal"
+                            [selectedItems]="selectedFruits"
+                            (selectionChange)="fruitSelectionChanged($event)"
+                            (selectionCancel)="modal.dismiss()"
+                            (selectionChangeId)="getIds($event)"
+                            (selectiontotal)="total($event)"
+                      ></app-typeahead>
+                    </ng-template>
+                  </ion-modal>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="12">
+                  <ion-label>Dirección</ion-label>
+                    <ion-input style="background-color: rgb(246, 245, 245);border-radius: 7px;
+                      --border-width: 0;
+                      --border-color: transparent;
+                    " type="text" formControlName="direccion"  label="Dirección" label-placement="floating"  fill="solid"></ion-input>
+                </ion-col>
+              </ion-row>
+
+
+
+
+
+        </div>
+
+        <div *ngIf="porHacerActivo">
+           <h1>Tareas</h1>
+           <ion-grid>
+              <ion-row *ngFor="let item of task" >
+
+                  <ion-card color="light">
+
+
+                                  <ion-grid>
+                                      <ion-row>
+                                            <ion-col size="9">
+                                                {{item}}
+                                            </ion-col>
+
+                                            <ion-col>
+                                                <ion-row>
+                                                      <ion-col size="5" >
+                                                          <ion-button (click)="delete(item)"size="small">
+                                                            <ion-icon style="font-size: 16px;"name="trash-outline"></ion-icon>
+                                                          </ion-button>
+                                                      </ion-col>
+                                                </ion-row>
+                                            </ion-col>
+                                      </ion-row>
+                                  </ion-grid>
+
+                  </ion-card>
+
+              </ion-row>
+           </ion-grid>
+
+           <ion-button (click)="presentAlert()">Agregar tareas</ion-button>
+           <ion-alert
+                      id="tarea-alert"
+                      header="Agregar tarea"
+                      [buttons]="alertButtons"
+                      [inputs]="alertInputs"
+
+           ></ion-alert>
+
+
+        </div>
+
+        <div style="margin-top: 20px;">
+          <ion-button type="submit" expand="full"  shape="round" class="formButon" color="danger">Asignar Punto</ion-button>
+        </div>
+  </form>
+
+</ion-content>

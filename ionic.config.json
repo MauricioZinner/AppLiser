@@ -1,0 +1,7 @@
+{
+  "name": "Ecomerce3",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

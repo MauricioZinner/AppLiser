@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "liserapp-893e7": {
+      "hosting": {
+        "app": [
+          "liserapp-893e7"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "liserapp-893e7"
+  }
+}

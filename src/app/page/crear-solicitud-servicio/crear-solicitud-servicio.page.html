@@ -1,0 +1,194 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>crear-solicitud-servicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">crear-solicitud-servicio</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+          <form [formGroup]="formRegister" (ngSubmit)="submitForm()" class="login-form">
+
+            <ion-row>
+                <ion-col size="12">
+                  <ion-label>Nombre Solicitud de Servicio</ion-label>
+                    <ion-input style="background-color: rgb(246, 245, 245);border-radius: 7px;
+                      --border-width: 0;
+                      --border-color: transparent;
+                    " type="text" formControlName="nombre"  label="Nombre" label-placement="floating"  fill="solid"></ion-input>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="6">
+                <ion-label>Fecha Desde</ion-label>
+                <ion-datetime-button style="width: 130px;height: 50px;; background-color: rgb(237, 237, 237);border-radius: 7px;" datetime="FechaDesde"></ion-datetime-button>
+                <ion-modal [keepContentsMounted]="true">
+                  <ng-template>
+                    <ion-datetime presentation="date"  formControlName="fechaInicio" id="FechaDesde"></ion-datetime>
+                  </ng-template>
+                </ion-modal>
+              </ion-col>
+
+              <ion-col size="6">
+                <ion-label>Fecha Hasta</ion-label>
+                <ion-datetime-button  style="width: 130px;height: 50px;; background-color: rgb(237, 237, 237);border-radius: 7px;" datetime="FechaHasta"></ion-datetime-button>
+                <ion-modal [keepContentsMounted]="true">
+                  <ng-template>
+                    <ion-datetime formControlName="fechaFin" presentation="date" id="FechaHasta"></ion-datetime>
+                  </ng-template>
+                </ion-modal>
+              </ion-col>
+            </ion-row>
+
+            <ion-row>
+                  <ion-col size="6">
+                    <ion-label>Hora Entrada</ion-label>
+                    <ion-datetime-button style="width: 130px;height: 50px; background-color: rgb(237, 237, 237);border-radius: 7px;" datetime="entrada"></ion-datetime-button>
+                    <ion-modal [keepContentsMounted]="true">
+                      <ng-template>
+                        <ion-datetime formControlName="horaEntrada" presentation="time" id="entrada"></ion-datetime>
+                      </ng-template>
+                    </ion-modal>
+                  </ion-col>
+
+                  <ion-col size="6">
+                    <ion-label>Hora Salida </ion-label>
+                    <ion-datetime-button  style="width: 130px; height: 50px;background-color: rgb(237, 237, 237);border-radius: 7px;" datetime="salida"></ion-datetime-button>
+                    <ion-modal [keepContentsMounted]="true">
+                      <ng-template>
+                        <ion-datetime formControlName="horaSalida"  presentation="time" id="salida"></ion-datetime>
+                      </ng-template>
+                    </ion-modal>
+                  </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="6">
+                  <ion-label>Almuerzo Entrada</ion-label>
+                  <ion-datetime-button style="width: 130px;height: 50px; background-color: rgb(237, 237, 237);border-radius: 7px;" datetime="Almuerzoentrada"></ion-datetime-button>
+                  <ion-modal [keepContentsMounted]="true">
+                    <ng-template>
+                      <ion-datetime formControlName="horaAlmuerzoInicio"  presentation="time" id="Almuerzoentrada"></ion-datetime>
+                    </ng-template>
+                  </ion-modal>
+                </ion-col>
+
+                <ion-col size="6">
+                  <ion-label>Almuerzo Salida </ion-label>
+                  <ion-datetime-button  style="width: 130px;height: 50px;; background-color: rgb(237, 237, 237);border-radius: 7px;" datetime="Almuerzosalida"></ion-datetime-button>
+                  <ion-modal [keepContentsMounted]="true">
+                    <ng-template>
+                      <ion-datetime formControlName="horaAlmuerzoFin"  presentation="time" id="Almuerzosalida"></ion-datetime>
+                    </ng-template>
+                  </ion-modal>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+              <div>
+                <ion-checkbox formControlName="tieneAlmuerzo"  slot="start" checked></ion-checkbox>
+                <ion-label>Aplica hora de almuerzo</ion-label>
+            </div>
+            </ion-row>
+
+
+            <div style="background-color: rgb(246, 245, 245) ;  --border-width: 0;--border-color: transparent;">
+              <ion-select label-placement="floating" fill="solid"
+                label="Personal Asignado"
+                interface="action-sheet"
+                placeholder="Personal Asignado"
+
+              >
+                <ion-select-option *ngFor="let item of data" [value]=item>{{item}}</ion-select-option>
+              </ion-select>
+            </div>
+
+
+
+
+             <ion-row>
+                <ion-list [inset]="true">
+                  <ion-item style="background-color: rgb(72, 72, 72); border-radius: 7px; margin-left: 50px;" [button]="true" [detail]="false" id="select">
+                    <ion-icon name="add-outline"></ion-icon>
+                    <ion-label>Agregar más personas</ion-label>
+                  </ion-item>
+                </ion-list>
+
+                <ion-modal trigger="select" #modal>
+                  <ng-template>
+                    <app-typeahead
+                          class="ion-page"
+                          title="Agregar más personas"
+                          [items]="personal"
+                          [selectedItems]="selectedFruits"
+                          (selectionChange)="fruitSelectionChanged($event)"
+                          (selectionCancel)="modal.dismiss()"
+                          (selectionChangeId)="getIds($event)"
+                    ></app-typeahead>
+                  </ng-template>
+                </ion-modal>
+            </ion-row>
+
+            <ion-row>
+              <ion-col size="12">
+                <ion-label>Dirección</ion-label>
+                  <ion-input style="background-color: rgb(246, 245, 245);border-radius: 7px;
+                    --border-width: 0;
+                    --border-color: transparent;
+                  " type="text" formControlName="direccion"  label="Dirección" label-placement="floating"  fill="solid"></ion-input>
+              </ion-col>
+            </ion-row>
+
+          <ion-row>
+            <ion-col size="6">
+              <ion-label>Contacto</ion-label>
+                <ion-input style="background-color: rgb(246, 245, 245);border-radius: 7px;
+                  --border-width: 0;
+                  --border-color: transparent;
+                " type="text" formControlName="contacto"  label="Persona de contacto" label-placement="floating"  fill="solid"></ion-input>
+            </ion-col>
+
+            <ion-col size="6">
+              <ion-label>Teléfono</ion-label>
+              <ion-input style="background-color: rgb(246, 245, 245);border-radius: 7px;
+                --border-width: 0;
+                --border-color: transparent;
+              " type="telefono" formControlName="telefono"  label="Teléfono" label-placement="floating"  fill="solid"></ion-input>
+          </ion-col>
+          </ion-row>
+
+          <ion-row>
+              <ion-col size="12">
+                <ion-label>Email</ion-label>
+                  <ion-input style="background-color: rgb(246, 245, 245);border-radius: 7px;
+                    --border-width: 0;
+                    --border-color: transparent;
+                  " type="text" formControlName="email"  label="Email" label-placement="floating"  fill="solid"></ion-input>
+              </ion-col>
+          </ion-row>
+
+          <ion-row>
+              <ion-col size="12">
+                <ion-label>Observaciones</ion-label>
+                  <ion-textarea textarea style="background-color: rgb(246, 245, 245);border-radius: 7px;
+                      --border-width: 0;
+                      --border-color: transparent;
+                      " type="textarea" formControlName="observaciones"  label="Observaciones" label-placement="floating"  fill="solid"></ion-textarea>
+              </ion-col>
+          </ion-row>
+
+
+          <div style="margin-top: 20px;">
+            <ion-button type="submit" expand="full"  shape="round" class="formButon" color="danger">Asignar Solicitud de Servicio</ion-button>
+          </div>
+          </form>
+
+
+
+</ion-content>

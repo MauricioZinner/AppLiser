@@ -1,0 +1,26 @@
+.logoliser{
+
+  width: 80px;
+  height: 80px;
+  margin:auto;
+  margin-top: 20px;
+}
+
+.menu-item {
+  margin-top: 25px;
+  font-weight: light;
+  padding-left: 30px;
+}
+
+.menu-item:active {
+  background-color: rgb(39, 39, 164); /* Cambia #ccc por el código de color plomo deseado */
+  height: 38px;
+  border-radius: 10px;
+  width: 300px;
+}
+
+.icon{
+
+  margin-right: 10px;
+}
+

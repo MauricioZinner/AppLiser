@@ -1,0 +1,89 @@
+<ion-header [translucent]="true" color="primary">
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+           <ion-back-button></ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  style="  overflow-y: hidden;">
+ <!--  <div class="background-image"  style="overflow-y: hidden;"></div> -->
+
+  <div class="liser">
+    <img [src]="'./../../assets/logoliser.svg'" class="logoliser" ><img>
+  </div>
+
+  <div class="title">
+    <div >
+      <ion-title class="ion-title">Registrarme</ion-title>
+    </div>
+  </div>
+
+
+  <form [formGroup]="formRegister" class="login-form" (ngSubmit)="Register()" >
+
+
+
+     <ion-list>
+          <div class="formInput">
+              <ion-input  type="text" formControlName="Nombre"  label="Nombre" label-placement="floating" fill="outline" placeholder="Nombre"></ion-input>
+          </div>
+          <div class="formInput">
+              <ion-input type="text" formControlName="Apellido"  label="Apellido" label-placement="floating" fill="outline" placeholder="Apellido"></ion-input>
+          </div>
+          <div class="formInput">
+                <ion-input type="email" formControlName="email"  label="Correo electrónico" label-placement="floating" fill="outline" placeholder="Correo electrónico"></ion-input>
+          </div>
+          <div class="formInput">
+            <ion-input type="password" formControlName="password"   label="Contraseña" label-placement="floating" fill="outline" placeholder="Contraseña"></ion-input>
+          </div>
+          <div class="formInput">
+            <ion-input type="password" formControlName="ConfirmarPassword"   label="Confirmar contraseña" label-placement="floating" fill="outline" placeholder="Confirmar contraseña"></ion-input>
+          </div>
+
+          <div style="margin-top: 30px;">
+            <ion-label >Usted es auxiliar de limpieza?</ion-label>
+            <ion-row>
+              <ion-col>
+                <div style="margin-top: 10px;">
+                  <ion-checkbox labelPlacement="start" formControlName="esAuxiliar">SI</ion-checkbox>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div style="margin-top: 10px;">
+                  <ion-checkbox labelPlacement="start" formControlName="noEsAuxiliar">NO</ion-checkbox>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+
+         <!--  <div style="margin-top: 30px;"  *ngIf="selectSupervisor">
+            <ion-label >Cuales son tus supervisores?</ion-label>
+            <ion-select  [multiple]="true" style="margin-top: 10px;" label="Escoge tus supervisores" label-placement="floating" fill="outline" placeholder="Escoge tus supervisores" (ionChange)="onSelectSupervisors($event)">
+              <ion-select-option value="" *ngFor="let item of supervisores" [value]="item.uid" >{{item.Nombre}}</ion-select-option>
+            </ion-select>
+          </div> -->
+
+     </ion-list>
+
+
+
+   <div style="margin-top: -20px;">
+    <ion-button type="submit" expand="full"  shape="round" class="formButon">Registrarme</ion-button>
+   </div>
+
+   <div style="margin-top: 20px;" >
+        <ion-grid >
+          <ion-row class="ion-justify-content-around" >
+             <a style="font-size: 13px;" routerLink="/login">Entrar</a>
+          </ion-row>
+        </ion-grid>
+   </div>
+
+  </form>
+
+
+
+
+</ion-content>
+

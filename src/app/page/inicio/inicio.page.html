@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>insumos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+    <div>ESTAMOS EN INICIO</div>
+
+    <div *ngFor="let item of idsSolicitudServicioArray" >
+          {{item.Nombre}}
+    </div>
+
+    <ion-card *ngFor="let item of puntos" (click)="IniciarPunto(item.idPunto)">
+
+           <div>{{item.direccion}}</div>
+           <div>data</div>
+
+    </ion-card>
+
+    <ion-img [src]="item" *ngFor="let item of photoss"></ion-img>
+     <ion-fab vertical="botton" horizontal="center" slot="fixed">
+           <ion-fab-button (click)="takePhoto()">
+                 <ion-icon name="camera"></ion-icon>
+           </ion-fab-button>
+    </ion-fab>
+
+    <ion-button routerLink="/home/maps" >mapas</ion-button>
+</ion-content>

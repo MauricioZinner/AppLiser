@@ -1,0 +1,50 @@
+
+
+.login-form {
+  margin-top: 0px;
+  position: relative;
+  z-index: 1;
+  padding: 30px;
+  overflow-y: hidden;
+  background-color: rgba(255, 255, 255, 1.8);
+  //box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.5);
+}
+
+.liser{
+
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+
+  .logoliser{
+    width: 120px;
+    height: 120px;
+    margin:auto;
+    margin-top: 0px;
+  }
+
+}
+
+.title{
+
+    .ion-title {
+      font-weight: 700; /* Hace que las letras sean más gruesas */
+      color: #000000; /* Establece un color negro más profundo */
+      font-size: 27px;
+      margin-top: 0px;
+    }
+}
+
+.formInput{
+  margin-top: 10px;
+}
+
+
+
+.formButon{
+
+  margin-top:50px;
+  border-radius: 20px;
+}

@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>detalle-punto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+    <!--   <ion-title size="large">detalle-punto</ion-title> -->
+
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-button fill="outline" routerLink="/home/inicio">
+    <ion-icon  name="arrow-back-outline"></ion-icon>
+  </ion-button>
+
+
+
+  <!-- En el template del componente padre -->
+
+    <div id="map"></div>
+
+    <ion-button (click)="iniciarTurno()">
+      Iniciar Turno
+    </ion-button>
+
+
+</ion-content>

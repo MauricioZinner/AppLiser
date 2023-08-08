@@ -1,0 +1,59 @@
+<ion-header >
+
+</ion-header>
+
+
+
+<ion-content  style="  overflow-y: hidden;">
+  <div class="background-image"  style="overflow-y: hidden;"></div>
+
+  <div class="liser">
+    <img [src]="'./../../assets/logoliser.svg'" class="logoliser" ><img>
+  </div>
+
+  <div class="title">
+    <div >
+      <ion-title class="ion-title">Bienvenido</ion-title>
+    </div>
+    <div>
+      <ion-title>Iniciar sesión</ion-title>
+    </div>
+  </div>
+
+
+  <form [formGroup]=" formLogin" class="login-form" (ngSubmit)="login()" >
+
+   <div class="formInput">
+       <ion-input type="email" formControlName="email"  label="Correo electrónico" label-placement="floating" fill="outline" placeholder="Correo electrónico"></ion-input>
+   </div>
+
+    <div class="formInputPass">
+      <ion-input type="password" formControlName="password"   label="Contraseña" label-placement="floating" fill="outline" placeholder="Contraseña"></ion-input>
+    </div>
+
+    <div style="margin-top: 15px;">
+        <ion-grid>
+          <ion-row class="ion-justify-content-end">
+              <a style="font-size: 13px;" >Olvidé mi contraseña</a>
+          </ion-row>
+        </ion-grid>
+    </div>
+
+   <div style="margin-top: -20px;">
+    <ion-button type="submit" expand="full"  shape="round" class="formButon">Iniciar sesión</ion-button>
+   </div>
+
+   <div style="margin-top: 20px;" >
+        <ion-grid >
+          <ion-row class="ion-justify-content-around" >
+             <ion-text style="font-size: 15px;">No tengo una cuenta todavia?</ion-text>
+             <a style="font-size: 13px;" routerLink="/register" >Registrarme</a>
+          </ion-row>
+        </ion-grid>
+   </div>
+
+
+  </form>
+
+</ion-content>
+

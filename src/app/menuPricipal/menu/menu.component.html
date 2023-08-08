@@ -1,0 +1,53 @@
+
+<ion-menu contentId="main-content" >
+  <ion-content color="primary">
+        <ion-img [src]="'./assets/logoliser.svg'" class="logoliser"></ion-img>
+
+              <ion-menu-toggle  color="primary">
+
+                <div *ngIf="this.rol=='empleado'" style="margin-top: 30px;" color="primary" >
+                      <div routerLink="/home/inicio" color="primary"class="menu-item"> <ion-icon class="icon" name="home-outline"></ion-icon> Inicio</div>
+                      <div color="primary" class="menu-item"> <ion-icon class="icon" name="checkmark-done-outline"></ion-icon>Tareas</div>
+                      <div color="primary" class="menu-item"><ion-icon class="icon"  name="pricetags-outline"></ion-icon>Insumos</div>
+                      <div color="primary" class="menu-item"><ion-icon class="icon"  name="today-outline"></ion-icon>Permisos</div>
+                      <div color="primary" class="menu-item"><ion-icon class="icon"  name="person-outline"></ion-icon>Uniformes</div>
+                      <div color="primary" class="menu-item"><ion-icon class="icon"  name="tv-outline"></ion-icon>Capacitaciones</div>
+                      <div color="primary" class="menu-item"><ion-icon class="icon"  name="receipt-outline"></ion-icon>Rol de pagos</div>
+                </div>
+
+                <div *ngIf="this.rol=='supervisor'" style="margin-top: 30px;" color="primary" >
+                      <div routerLink="/home/inicio" color="primary"class="menu-item"> <ion-icon class="icon" name="home-outline"></ion-icon> Inicio</div>
+                      <div routerLink="/home/asignar" color="primary" class="menu-item"> <ion-icon class="icon" name="folder-open-outline"></ion-icon>Asignaciones</div>
+                      <div color="primary" class="menu-item"><ion-icon class="icon"  name="location-outline"></ion-icon>Puntos</div>
+                      <div color="primary" class="menu-item"><ion-icon class="icon"  name="person-outline"></ion-icon>Personal</div>
+                      <div color="primary" class="menu-item"><ion-icon class="icon"  name="tv-outline"></ion-icon>Vacantes</div>
+                      <div routerLink="/home/insumos" color="primary" class="menu-item"><ion-icon class="icon"  name="pricetags-outline"></ion-icon>Insumos</div>
+                </div>
+
+                <div *ngIf="this.rol=='administrador'" style="margin-top: 30px;" color="primary" >
+                  <div routerLink="/home/maps" color="primary"class="menu-item"> <ion-icon class="icon" name="home-outline"></ion-icon> Agencias</div>
+                </div>
+
+                <div style="margin-top: 100px;" color="primary" >
+                      <div color="primary" class="menu-item"><ion-icon class="icon"  name="help-outline"></ion-icon>Ayuda</div>
+                      <div (click)="logout()" color="primary" class="menu-item"><ion-icon class="icon" name="enter-outline"></ion-icon>Cerrar sesión</div>
+               </div>
+              </ion-menu-toggle>
+  </ion-content>
+</ion-menu>
+
+ <div class="ion-page" id="main-content" >
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button>
+
+        </ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Menu
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding"> Tap the button in the toolbar to open the menu. </ion-content>
+</div>
